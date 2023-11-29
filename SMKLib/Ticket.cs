@@ -2,7 +2,6 @@ namespace SMKLib;
 
 public class Ticket
 {
-    private int _ticketId;
     public int TicketId { get; set; }
     public DateTime TicketDate { get; set; }
     public bool TicketResolved { get; set; }
