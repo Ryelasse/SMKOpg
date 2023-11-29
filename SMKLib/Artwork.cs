@@ -2,10 +2,12 @@
 {
     public class Artwork
     {
-        public Artwork(int artid, string name, double mintemp, double maxtemp, double minhumidity, double maxhumidity) 
+        public Artwork(int artid, string name, double actualtemp, double actualhumidity, double mintemp, double maxtemp, double minhumidity, double maxhumidity) 
         {
             ArtId = artid;
             Name = name;
+            ActualTemp = actualtemp;
+            ActualHumidity = actualhumidity;
             MinTemp = mintemp;
             MaxTemp = maxtemp;
             MinHumidity = minhumidity;
@@ -15,6 +17,8 @@
 
         public int ArtId { get; set; }
         public string Name { get; set; }
+        public double ActualTemp { get; set; }
+        public double ActualHumidity { get; set; }
         public double MinTemp { get; set; }
         public double MaxTemp { get; set; }
         public double MinHumidity { get; set; }
@@ -22,26 +26,26 @@
 
         public void ValidateTemp()
         {
-            if(MinTemp < 0) 
+            if(MinTemp > ActualTemp) 
             {
-                throw new ArgumentOutOfRangeException(nameof(MinTemp), $"The Temperature is too low!");
+                throw new ArgumentOutOfRangeException(nameof(MinTemp), $"The Temperature is too low, it must be higher than {MinTemp}!");
             }
-            if(MaxTemp > 0) 
+            if (MaxTemp < ActualTemp) 
             {
-                throw new ArgumentOutOfRangeException(nameof(MaxTemp), $"The Temperature is too high!");
+                throw new ArgumentOutOfRangeException(nameof(MaxTemp), $"The Temperature is too high, it must be lower than {MaxTemp}!");
             }
 
         }
 
         public void ValidateHumidity()
         {
-            if (MinHumidity < 0)
+            if (MinHumidity > ActualHumidity)
             {
-                throw new ArgumentOutOfRangeException(nameof(MinHumidity), $"The Humidity is too low!");
+                throw new ArgumentOutOfRangeException(nameof(MinHumidity), $"The Humidity is too low, it must be higher than {MinHumidity}!");
             }
-            if ( MaxHumidity > 0)
+            if ( MaxHumidity < ActualHumidity)
             {
-                throw new ArgumentOutOfRangeException(nameof(MaxHumidity), $"The Humidity is too high!");
+                throw new ArgumentOutOfRangeException(nameof(MaxHumidity), $"The Humidity is too high, it must be lower than {MaxHumidity}!");
             }
         }
 
