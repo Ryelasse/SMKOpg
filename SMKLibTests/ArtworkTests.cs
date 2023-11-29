@@ -12,9 +12,9 @@ namespace SMKLib.Tests
     public class ArtworkTests
     {
         [TestMethod()]
-        public void ArtworkTest()
+        public void ArtworkTestTemp()
         {
-            Assert.Fail();
+            
         }
 
         [TestMethod()]

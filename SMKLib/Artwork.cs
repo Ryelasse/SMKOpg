@@ -15,6 +15,13 @@
         
         }
 
+        const double ValidTemp = 10;
+        const double UnderTemp = -15;
+        const double OverTemp = 30;
+
+        const double Mitemp = 5;
+        const double Matemp = 25;
+
         public int ArtId { get; set; }
         public string Name { get; set; }
         public double ActualTemp { get; set; }
